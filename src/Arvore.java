@@ -72,8 +72,11 @@ class ARVORE {
                     p = p.esq;
                 }
                 aux.num = p.num;
-                p = null;
-                r.esq = null;
+                if (r != null) {
+                    r.esq = null;
+                } else {
+                    aux.dir = null;
+                }
                 return aux;
             }
         } else if (aux.num < num) {
@@ -83,6 +86,7 @@ class ARVORE {
         }
         return aux;
     }
+
 
     public static void WriteLog(String log) {
 
@@ -111,13 +115,22 @@ class ARVORE {
         while (relay < dados.length) {
             ARVORE tree = new ARVORE();
             long tempoInicial = System.nanoTime();
+            int deleteTest = 0;
             for (int i = 0; i < dados[relay]; i++) {
                 int key = rnd.nextInt(1, 999999999);
                 tree = inserir(tree, key);
+                if(i == (dados[relay]/2)){
+                    deleteTest = key;
+                }
 
             }
             long tempofinal = System.nanoTime() - tempoInicial;
             String analise = "tempo de execução -> " + tempofinal + "ns" + " Tamanho final da Arvore Bin -> " + tree.size(tree) + "\n";
+            WriteLog(analise);
+            long tempoInicialDel = System.nanoTime();
+            excluir(tree,deleteTest);
+            long tempoFinalDel = System.nanoTime() - tempoInicialDel;
+            analise = "tempo de deletar -> " + tempoFinalDel + "ns" + " Tamanho final da Arvore Bin -> " + tree.size(tree)+ "\n";
             WriteLog(analise);
             int find  = rnd.nextInt(1 , 999999999);
             long tempoInicialF = System.nanoTime();

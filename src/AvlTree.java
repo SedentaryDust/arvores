@@ -37,8 +37,19 @@ public class AvlTree {
     }
 
     private int getFactor(AvlNode tree) {
+        if (tree == null) {
+            return 0; // Se a árvore for nula, o fator de equilíbrio é 0.
+        }
+
+        if (tree.left == null) {
+            return -height(tree.right);
+        } else if (tree.right == null) {
+            return height(tree.left);
+        }
+
         return height(tree.left) - height(tree.right);
     }
+
 
     public boolean insert(int x) {
         root = insert(x, root);
@@ -58,6 +69,10 @@ public class AvlTree {
     }
 
     public AvlNode balance(AvlNode tree) {
+        if (tree == null) {
+            return null; // Se a árvore for nula, não há necessidade de balancear.
+        }
+
         if (getFactor(tree) == 2) {
             if (getFactor(tree.left) > 0) {
                 tree = doRightRotation(tree);
@@ -75,15 +90,21 @@ public class AvlTree {
         return tree;
     }
 
+
     private static AvlNode doRightRotation(AvlNode n2) {
+        if (n2 == null || n2.left == null) {
+            return n2; // Não é possível fazer a rotação se não houver um nó esquerdo.
+        }
+
         AvlNode n1 = n2.left;
         n2.left = n1.right;
         n1.right = n2;
         n2.height = Math.max(height(n2.left), height(n2.right)) + 1;
         n1.height = Math.max(height(n1.left), n2.height) + 1;
         return n1;
-
     }
+
+
 
     private static AvlNode doLeftRotation(AvlNode n1) {
         AvlNode n2 = n1.right;
@@ -158,14 +179,17 @@ public class AvlTree {
             }
         }
 
-        // Rebalanceie a árvore após a exclusão.
-        tree = balance(tree);
+        if (tree != null) {
+            // Rebalanceie a árvore após a exclusão.
+            tree = balance(tree);
 
-        // Atualize a altura do nó atual.
-        tree.height = max(height(tree.left), height(tree.right)) + 1;
+            // Atualize a altura do nó atual.
+            tree.height = max(height(tree.left), height(tree.right)) + 1;
+        }
 
         return tree;
     }
+
 
     private AvlNode findMin(AvlNode tree) {
         while (tree.left != null) {
@@ -196,7 +220,7 @@ public class AvlTree {
     public static void main(String[] args) {
         int[] dados = {100, 500, 1000, 10000, 20000};
         int relay = 0;
-
+        int deleteTest = 0;
         Random rnd = new Random(1);
 
         while (relay < dados.length) {
@@ -204,11 +228,19 @@ public class AvlTree {
             long tempoInicial = System.nanoTime();
             for (int i = 0; i < dados[relay]; i++) {
                 int key = rnd.nextInt(1, 999999999);
+                if(i == (dados[relay]) / 2){
+                    deleteTest = key;
+                }
                 tree.insert(key);
 
             }
             long tempofinal = System.nanoTime() - tempoInicial;
             String analise = "tempo de execução -> " + tempofinal + "ns" + " Tamanho final da Arvore AVL -> " + size(tree.root)+ "\n";
+            WriteLog(analise);
+            long tempoInicialDel = System.nanoTime();
+            tree.delete(deleteTest);
+            long tempoFinalDel = System.nanoTime() - tempoInicialDel;
+            analise = "tempo de deletar -> " + tempoFinalDel + "ns" + " Tamanho final da Arvore AVL -> " + size(tree.root)+ "\n";
             WriteLog(analise);
             int find  = rnd.nextInt(1 , 999999999);
             long tempoInicialF = System.nanoTime();
