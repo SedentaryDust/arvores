@@ -1,0 +1,55 @@
+tempo de execução -> 572800ns Tamanho final da Arvore Bin -> 102
+tempo de deletar -> 7200ns Tamanho final da Arvore Bin -> 101
+Achou:false Tempo necessario para achar numa arvore Bin de tamanho -> 101 foi de -> 10200ns
+tempo de execução -> 952300ns Tamanho final da Arvore Bin -> 502
+tempo de deletar -> 6500ns Tamanho final da Arvore Bin -> 501
+Achou:false Tempo necessario para achar numa arvore Bin de tamanho -> 501 foi de -> 6300ns
+tempo de execução -> 1412600ns Tamanho final da Arvore Bin -> 1002
+tempo de deletar -> 3900ns Tamanho final da Arvore Bin -> 1001
+Achou:false Tempo necessario para achar numa arvore Bin de tamanho -> 1001 foi de -> 5800ns
+tempo de execução -> 6006500ns Tamanho final da Arvore Bin -> 10002
+tempo de deletar -> 4500ns Tamanho final da Arvore Bin -> 10001
+Achou:false Tempo necessario para achar numa arvore Bin de tamanho -> 10001 foi de -> 4500ns
+tempo de execução -> 13432700ns Tamanho final da Arvore Bin -> 20002
+tempo de deletar -> 5700ns Tamanho final da Arvore Bin -> 20001
+Achou:false Tempo necessario para achar numa arvore Bin de tamanho -> 20001 foi de -> 4100ns
+
+
+
+
+tempo de execução -> 1.097.000ns Tamanho final da Arvore AVL -> 101
+tempo de deletar -> 43.500ns Tamanho final da Arvore AVL -> 100
+Achou:false Tempo necessario para achar numa arvore AVL de tamanho -> 100 foi de -> 15.000ns
+tempo de execução -> 1.455.800ns Tamanho final da Arvore AVL -> 501
+tempo de deletar -> 24.800ns Tamanho final da Arvore AVL -> 500
+Achou:false Tempo necessario para achar numa arvore AVL de tamanho -> 500 foi de -> 5700ns
+tempo de execução -> 1672700ns Tamanho final da Arvore AVL -> 1001
+tempo de deletar -> 11200ns Tamanho final da Arvore AVL -> 1000
+Achou:false Tempo necessario para achar numa arvore AVL de tamanho -> 1000 foi de -> 3700ns
+tempo de execução -> 12926300ns Tamanho final da Arvore AVL -> 10001
+tempo de deletar -> 13500ns Tamanho final da Arvore AVL -> 10000
+Achou:false Tempo necessario para achar numa arvore AVL de tamanho -> 10000 foi de -> 4500ns
+tempo de execução -> 24149100ns Tamanho final da Arvore AVL -> 20001
+tempo de deletar -> 23900ns Tamanho final da Arvore AVL -> 20000
+Achou:false Tempo necessario para achar numa arvore AVL de tamanho -> 20000 foi de -> 4300ns
+
+
+execucao 100   BIN > AVL
+deleltar 100   BIN > AVL
+find     100   BIN > AVL
+
+execucao 500   BIN > AVL
+deletar  500   BIN > AVL
+find     500   BIN < AVL
+
+execucao 1000  BIN > AVL
+deletar  1000  BIN > AVL
+find     1000  BIN < AVL
+
+execucao 10000 BIN > AVL
+deletar  10000 BIN > AVL
+find     10000 BIN == AVL (acredito que o desbalancear da arvore pode ter ajudado)
+
+execucao 20000 BIN > AVL
+deletar  20000 BIN > AVL
+find     20000 BIN levemente melhor AVL (acredito que o desbalancear da arvore pode ter ajudado)
